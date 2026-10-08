@@ -56,6 +56,15 @@ const router = createBrowserRouter([
     },
 
     {
+        index: true,
+        element: (
+            <ProtectedRoute isPrivate allowedRoles={[ROLES.PATIENT]}>
+                <Scheduling />
+            </ProtectedRoute>
+        ),
+    },
+
+    {
         path: 'scheduling',
         element: (
             <ProtectedRoute isPrivate allowedRoles={[ROLES.PATIENT]}>
@@ -63,11 +72,29 @@ const router = createBrowserRouter([
             </ProtectedRoute>
         ),
     },
+
+    {
+        index: true,
+        element: (
+            <ProtectedRoute isPrivate allowedRoles={[ROLES.ADMIN]}>
+                <DashAdmin />
+            </ProtectedRoute>
+        ),
+    },
+
     {
         path: 'dash/admin',
         element: (
             <ProtectedRoute isPrivate allowedRoles={[ROLES.ADMIN]}>
                 <DashAdmin />
+            </ProtectedRoute>
+        ),
+    },
+    {
+        index: true,
+        element: (
+            <ProtectedRoute isPrivate allowedRoles={[ROLES.DOCTOR]}>
+                <HomeDoctor />
             </ProtectedRoute>
         ),
     },

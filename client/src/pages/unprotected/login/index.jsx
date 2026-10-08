@@ -6,6 +6,13 @@ import { POST } from '../../../api/user';
 import ProtectedRoute from '../../../components/protectedRoute';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../../components/footer';
+import { ROLES } from '../../../utils/roles';
+
+const HOME_BY_ROLE = {
+    [ROLES.ADMIN]: '/dash/admin',
+    [ROLES.DOCTOR]: '/home/doctor',
+    [ROLES.PATIENT]: '/scheduling',
+};
 
 export default function Login() {
     const { login } = useAuthenticated();
@@ -20,11 +27,12 @@ export default function Login() {
             const data = await POST('/api/auth/login', { email, password });
             if (data.status !== 200) throw new Error(data.detail);
             login(data.token);
-            navigate('/dash');
+            navigate(HOME_BY_ROLE[data.role] ?? '/', { replace: true });
         } catch (err) {
             alert(err.message);
         }
     }
+
 
     return (
         <ProtectedRoute isPrivate={false}>
