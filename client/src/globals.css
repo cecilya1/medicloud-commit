@@ -1,0 +1,36 @@
+@import 'tailwindcss';
+
+:root {
+    --color1: #c80b2a;
+    --color2: #d43953;
+    --color3: #fff5f6;
+    --color4: #c44a57;
+    --color5: #fffafa;
+    --color4: #c44a57;
+}
+
+@theme inline {
+    --color-color1: var(--color1);
+    --color-color2: var(--color2);
+    --color-color3: var(--color3);
+    --color-color4: var(--color4);
+}
+
+@layer base {
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+}
+@layer components {
+    .horario {
+        color: #e03955;
+        font-size: 1.3rem;
+        height: 50px;
+        width: 100px;
+        border: 1px solid #ffabb9;
+        border-radius: 0.5rem;
+    }
+}
